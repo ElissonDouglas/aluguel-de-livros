@@ -1,6 +1,7 @@
 package com.learningspringboot.alugueldelivros.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore // Ignora a lista de empréstimos na response da API, evitando o looping
     @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "client")
     private List<Loan> loans = new ArrayList<>();
