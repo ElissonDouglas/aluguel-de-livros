@@ -2,16 +2,15 @@ package com.learningspringboot.alugueldelivros.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="tb_user")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
     private static final long serialVersionUUID = 1L;
@@ -24,4 +23,19 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "client")
+    private List<Loan> loans = new ArrayList<>();
+
+
+    public User(Long id, String name, String email, String phone, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
+
+
 }
