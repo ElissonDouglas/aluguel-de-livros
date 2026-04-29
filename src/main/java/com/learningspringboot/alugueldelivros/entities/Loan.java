@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.time.Instant;
 
 @Entity
+@Table(name="tb_loan")
 @Data
 @NoArgsConstructor
 public class Loan implements Serializable {
