@@ -1,9 +1,7 @@
 package com.learningspringboot.alugueldelivros.services;
 
 import com.learningspringboot.alugueldelivros.entities.Loan;
-import com.learningspringboot.alugueldelivros.entities.User;
 import com.learningspringboot.alugueldelivros.repositories.LoanRepository;
-import com.learningspringboot.alugueldelivros.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

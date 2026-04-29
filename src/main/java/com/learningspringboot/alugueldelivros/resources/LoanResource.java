@@ -3,7 +3,6 @@ package com.learningspringboot.alugueldelivros.resources;
 
 import com.learningspringboot.alugueldelivros.entities.Loan;
 import com.learningspringboot.alugueldelivros.services.LoanService;
-import com.learningspringboot.alugueldelivros.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
