@@ -1,6 +1,6 @@
 package com.learningspringboot.alugueldelivros.resources;
 
-import com.learningspringboot.alugueldelivros.entities.Product;
+import com.learningspringboot.alugueldelivros.entities.Book;
 import com.learningspringboot.alugueldelivros.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/products")
-public class ProductResource {
+@RequestMapping(value="/books")
+public class BookResource {
 
     @Autowired
     private ProductService service;
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
+    public ResponseEntity<List<Book>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id) {
+    public ResponseEntity<Book> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 }

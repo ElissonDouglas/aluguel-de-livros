@@ -8,10 +8,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_product")
-@Data
+@Table(name = "tb_book")
+@Getter
+@Setter
 @NoArgsConstructor
-public class Product implements Serializable {
+public class Book implements Serializable {
     private static final Long serialVersionUUID = 1L;
 
     @Id
@@ -23,11 +24,13 @@ public class Product implements Serializable {
     private Double price;
     private String imgUrl;
 
-    @Transient
-    @Setter(AccessLevel.NONE)
+    @ManyToMany
+    @JoinTable(name = "tb_book_category",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    public Product(Long id, String name, String description, Double price, String imgUrl) {
+    public Book(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;
         this.name = name;
         this.description = description;

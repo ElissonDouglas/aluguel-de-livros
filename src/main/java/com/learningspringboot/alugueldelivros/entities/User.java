@@ -11,7 +11,8 @@ import java.util.List;
 
 @Entity
 @Table(name="tb_user")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class User implements Serializable {
     private static final long serialVersionUUID = 1L;

@@ -1,6 +1,7 @@
 package com.learningspringboot.alugueldelivros.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,8 @@ import java.util.Set;
 
 @Entity
 @Table(name="tb_category")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Category implements Serializable {
     private static final Long serialVersionUUID = 1L;
@@ -20,9 +22,9 @@ public class Category implements Serializable {
 
     private String name;
 
-    @Transient
-    @Setter(AccessLevel.NONE)
-    private Set<Product> products = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories") // nome da coleçao de categorias na entidade product
+    private Set<Book> books = new HashSet<>();
 
 
     public Category(Long id, String name) {

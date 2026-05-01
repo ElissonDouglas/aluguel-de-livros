@@ -5,16 +5,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.learningspringboot.alugueldelivros.entities.enums.LoanStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 
 @Entity
 @Table(name="tb_loan")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Loan implements Serializable {
     private static final long serialVersionUUID = 1L;

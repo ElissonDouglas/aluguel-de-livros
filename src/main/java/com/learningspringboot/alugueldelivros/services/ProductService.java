@@ -1,7 +1,7 @@
 package com.learningspringboot.alugueldelivros.services;
 
-import com.learningspringboot.alugueldelivros.entities.Product;
-import com.learningspringboot.alugueldelivros.repositories.ProductRepository;
+import com.learningspringboot.alugueldelivros.entities.Book;
+import com.learningspringboot.alugueldelivros.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,14 @@ import java.util.Optional;
 public class ProductService {
 
     @Autowired
-    private ProductRepository repository;
+    private BookRepository repository;
 
-    public List<Product> findAll() {
+    public List<Book> findAll() {
         return repository.findAll();
     }
 
-    public Product findById(Long id) {
-        Optional<Product> obj = repository.findById(id);
+    public Book findById(Long id) {
+        Optional<Book> obj = repository.findById(id);
         return obj.get();
     }
 }
