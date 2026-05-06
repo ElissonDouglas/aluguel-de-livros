@@ -1,5 +1,6 @@
 package com.learningspringboot.alugueldelivros.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,6 +31,10 @@ public class Book implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "id.book")
+    private Set<LoanItem> items = new HashSet<>();
+
     public Book(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;
         this.name = name;
@@ -37,4 +42,14 @@ public class Book implements Serializable {
         this.price = price;
         this.imgUrl = imgUrl;
     }
+
+    @JsonIgnore
+    public Set<Loan> getLoans() {
+        Set<Loan> set = new HashSet<>();
+        for (LoanItem x : items) {
+            set.add(x.getLoan());
+        }
+        return set;
+    }
+
 }

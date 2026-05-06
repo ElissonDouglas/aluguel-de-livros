@@ -1,7 +1,7 @@
 package com.learningspringboot.alugueldelivros.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.learningspringboot.alugueldelivros.entities.pk.LoanBookPk;
+import com.learningspringboot.alugueldelivros.entities.pk.LoanItemPk;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -18,17 +18,17 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-public class LoanBook implements Serializable {
+public class LoanItem implements Serializable {
     private static final long serialVersionUUID = 1L;
 
     @EmbeddedId
     @JsonIgnore
-    private LoanBookPk id = new LoanBookPk();
+    private LoanItemPk id = new LoanItemPk();
 
     private Integer quantity;
     private Double price;
 
-    public LoanBook(Loan loan, Book book, Integer quantity, Double price) {
+    public LoanItem(Loan loan, Book book, Integer quantity, Double price) {
         super();
         id.setLoan(loan);
         id.setBook(book);
@@ -40,7 +40,7 @@ public class LoanBook implements Serializable {
     public Loan getLoan() {
         return id.getLoan();
     }
-
+    
     public Book getBook() {
         return id.getBook();
     }
@@ -48,7 +48,7 @@ public class LoanBook implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        LoanBook loanBook = (LoanBook) o;
+        LoanItem loanBook = (LoanItem) o;
         return Objects.equals(quantity, loanBook.quantity) && Objects.equals(price, loanBook.price);
     }
 

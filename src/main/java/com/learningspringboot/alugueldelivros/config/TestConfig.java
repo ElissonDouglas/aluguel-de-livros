@@ -82,10 +82,10 @@ public class TestConfig implements CommandLineRunner {
 
         bookRepository.saveAll(Arrays.asList(p1, p2, p3));
 
-        LoanBook oi1 = new LoanBook(l1, p1, 2, p1.getPrice());
-        LoanBook oi2 = new LoanBook(l1, p3, 1, p3.getPrice());
-        LoanBook oi3 = new LoanBook(l2, p3, 2, p3.getPrice());
-        LoanBook oi4 = new LoanBook(l3, p2, 2, p2.getPrice());
+        LoanItem oi1 = new LoanItem(l1, p1, 2, p1.getPrice());
+        LoanItem oi2 = new LoanItem(l1, p3, 1, p3.getPrice());
+        LoanItem oi3 = new LoanItem(l2, p3, 2, p3.getPrice());
+        LoanItem oi4 = new LoanItem(l3, p2, 2, p2.getPrice());
 
         loanBookRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 

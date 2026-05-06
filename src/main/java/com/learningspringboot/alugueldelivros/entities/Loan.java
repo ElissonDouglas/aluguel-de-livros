@@ -2,7 +2,6 @@ package com.learningspringboot.alugueldelivros.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.learningspringboot.alugueldelivros.entities.enums.LoanStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,7 +29,7 @@ public class Loan implements Serializable {
     private Integer loanStatus;
 
     @OneToMany(mappedBy = "id.loan")
-    private Set<LoanBook> items = new HashSet<>();
+    private Set<LoanItem> items = new HashSet<>();
 
 
     @ManyToOne // Relacionamento muitos para um
@@ -50,7 +49,7 @@ public class Loan implements Serializable {
         return LoanStatus.valueOf(this.loanStatus);
     }
 
-    public Set<LoanBook> getItems() {
+    public Set<LoanItem> getItems() {
         return items;
     }
 

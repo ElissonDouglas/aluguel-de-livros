@@ -15,7 +15,7 @@ import java.util.Objects;
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoanBookPk implements Serializable {
+public class LoanItemPk implements Serializable {
     private static final long serialVersionUUID = 1L;
 
     @ManyToOne
@@ -45,7 +45,7 @@ public class LoanBookPk implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        LoanBookPk that = (LoanBookPk) o;
+        LoanItemPk that = (LoanItemPk) o;
         return Objects.equals(loan, that.loan) && Objects.equals(book, that.book);
     }
 
