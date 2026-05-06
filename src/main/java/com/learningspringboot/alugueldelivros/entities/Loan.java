@@ -9,6 +9,8 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="tb_loan")
@@ -27,6 +29,9 @@ public class Loan implements Serializable {
 
     private Integer loanStatus;
 
+    @OneToMany(mappedBy = "id.loan")
+    private Set<LoanBook> items = new HashSet<>();
+
 
     @ManyToOne // Relacionamento muitos para um
     @JoinColumn(name = "client_id") // Nome da coluna com a chave estrangeira
@@ -43,6 +48,10 @@ public class Loan implements Serializable {
 
     public LoanStatus getLoanStatus() {
         return LoanStatus.valueOf(this.loanStatus);
+    }
+
+    public Set<LoanBook> getItems() {
+        return items;
     }
 
     public void setLoanStatus(LoanStatus loanStatus) {

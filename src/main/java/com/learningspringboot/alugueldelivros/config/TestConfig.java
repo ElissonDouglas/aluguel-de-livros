@@ -1,14 +1,8 @@
 package com.learningspringboot.alugueldelivros.config;
 
-import com.learningspringboot.alugueldelivros.entities.Category;
-import com.learningspringboot.alugueldelivros.entities.Loan;
-import com.learningspringboot.alugueldelivros.entities.Book;
-import com.learningspringboot.alugueldelivros.entities.User;
+import com.learningspringboot.alugueldelivros.entities.*;
 import com.learningspringboot.alugueldelivros.entities.enums.LoanStatus;
-import com.learningspringboot.alugueldelivros.repositories.CategoryRepository;
-import com.learningspringboot.alugueldelivros.repositories.LoanRepository;
-import com.learningspringboot.alugueldelivros.repositories.BookRepository;
-import com.learningspringboot.alugueldelivros.repositories.UserRepository;
+import com.learningspringboot.alugueldelivros.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @Autowired
+    private LoanBookRepository loanBookRepository;
 
     @Override
     public void run(String...args) throws Exception {
@@ -84,6 +81,13 @@ public class TestConfig implements CommandLineRunner {
 
 
         bookRepository.saveAll(Arrays.asList(p1, p2, p3));
+
+        LoanBook oi1 = new LoanBook(l1, p1, 2, p1.getPrice());
+        LoanBook oi2 = new LoanBook(l1, p3, 1, p3.getPrice());
+        LoanBook oi3 = new LoanBook(l2, p3, 2, p3.getPrice());
+        LoanBook oi4 = new LoanBook(l3, p2, 2, p2.getPrice());
+
+        loanBookRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
     }
 }
