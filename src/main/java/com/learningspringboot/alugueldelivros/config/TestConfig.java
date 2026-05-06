@@ -89,5 +89,12 @@ public class TestConfig implements CommandLineRunner {
 
         loanBookRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
+
+        Payment pay1 = new Payment(null, Instant.parse("2026-02-20T21:53:07Z"), l1);
+        l1.setPayment(pay1);
+
+
+        loanRepository.save(l1);
+
     }
 }

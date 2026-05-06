@@ -31,10 +31,12 @@ public class Loan implements Serializable {
     @OneToMany(mappedBy = "id.loan")
     private Set<LoanItem> items = new HashSet<>();
 
-
     @ManyToOne // Relacionamento muitos para um
     @JoinColumn(name = "client_id") // Nome da coluna com a chave estrangeira
     private User client;
+
+    @OneToOne(mappedBy = "loan", cascade = CascadeType.ALL)
+    private Payment payment;
 
 
     public Loan(Long id, Instant moment, LoanStatus loanStatus, User client) {

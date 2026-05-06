@@ -40,7 +40,7 @@ public class LoanItem implements Serializable {
     public Loan getLoan() {
         return id.getLoan();
     }
-    
+
     public Book getBook() {
         return id.getBook();
     }
