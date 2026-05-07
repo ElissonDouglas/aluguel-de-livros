@@ -38,6 +38,16 @@ public class Loan implements Serializable {
     @OneToOne(mappedBy = "loan", cascade = CascadeType.ALL)
     private Payment payment;
 
+    public Double getTotal() {
+        double x = 0.0;
+
+        for (LoanItem item : items) {
+            x += item.getSubTotal();
+        }
+
+        return x;
+    }
+
 
     public Loan(Long id, Instant moment, LoanStatus loanStatus, User client) {
         this.id = id;
