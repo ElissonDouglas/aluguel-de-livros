@@ -20,7 +20,7 @@ public class LoanService {
 
     public Loan findById(Long id) {
         Optional<Loan> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
 
