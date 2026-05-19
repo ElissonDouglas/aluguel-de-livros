@@ -18,7 +18,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-public class LoanItem implements Serializable {
+public class OrderItem implements Serializable {
     private static final long serialVersionUUID = 1L;
 
     @EmbeddedId
@@ -28,17 +28,17 @@ public class LoanItem implements Serializable {
     private Integer quantity;
     private Double price;
 
-    public LoanItem(Loan loan, Book book, Integer quantity, Double price) {
+    public OrderItem(Order order, Book book, Integer quantity, Double price) {
         super();
-        id.setLoan(loan);
+        id.setOrder(order);
         id.setBook(book);
         this.quantity = quantity;
         this.price = price;
     }
 
     @JsonIgnore
-    public Loan getLoan() {
-        return id.getLoan();
+    public Order getLoan() {
+        return id.getOrder();
     }
 
     public Book getBook() {
@@ -52,7 +52,7 @@ public class LoanItem implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        LoanItem loanBook = (LoanItem) o;
+        OrderItem loanBook = (OrderItem) o;
         return Objects.equals(quantity, loanBook.quantity) && Objects.equals(price, loanBook.price);
     }
 

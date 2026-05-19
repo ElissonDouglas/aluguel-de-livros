@@ -1,6 +1,6 @@
 package com.learningspringboot.alugueldelivros.entities.enums;
 
-public enum LoanStatus {
+public enum OrderStatus {
     REQUESTED(1),
     IN_POSSESSION(2),
     RETURNED(3),
@@ -8,7 +8,7 @@ public enum LoanStatus {
 
     private int code;
 
-    private LoanStatus(int code) {
+    private OrderStatus(int code) {
         this.code = code;
     }
 
@@ -16,8 +16,8 @@ public enum LoanStatus {
         return code;
     }
 
-    public static LoanStatus valueOf(int code) {
-        for (LoanStatus value : LoanStatus.values()) {
+    public static OrderStatus valueOf(int code) {
+        for (OrderStatus value : OrderStatus.values()) {
             if (value.getCode() == code) {
                 return value;
             }

@@ -2,7 +2,7 @@ package com.learningspringboot.alugueldelivros.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.learningspringboot.alugueldelivros.entities.enums.LoanStatus;
+import com.learningspringboot.alugueldelivros.entities.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Loan implements Serializable {
+public class Order implements Serializable {
     private static final long serialVersionUUID = 1L;
 
     @Id
@@ -28,20 +28,20 @@ public class Loan implements Serializable {
 
     private Integer loanStatus;
 
-    @OneToMany(mappedBy = "id.loan")
-    private Set<LoanItem> items = new HashSet<>();
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
 
     @ManyToOne // Relacionamento muitos para um
     @JoinColumn(name = "client_id") // Nome da coluna com a chave estrangeira
     private User client;
 
-    @OneToOne(mappedBy = "loan", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
 
     public Double getTotal() {
         double x = 0.0;
 
-        for (LoanItem item : items) {
+        for (OrderItem item : items) {
             x += item.getSubTotal();
         }
 
@@ -49,25 +49,25 @@ public class Loan implements Serializable {
     }
 
 
-    public Loan(Long id, Instant moment, LoanStatus loanStatus, User client) {
+    public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
         this.id = id;
         this.moment = moment;
-        setLoanStatus(loanStatus);
+        setLoanStatus(orderStatus);
         this.client = client;
     }
 
 
-    public LoanStatus getLoanStatus() {
-        return LoanStatus.valueOf(this.loanStatus);
+    public OrderStatus getLoanStatus() {
+        return OrderStatus.valueOf(this.loanStatus);
     }
 
-    public Set<LoanItem> getItems() {
+    public Set<OrderItem> getItems() {
         return items;
     }
 
-    public void setLoanStatus(LoanStatus loanStatus) {
-        if (loanStatus != null) {
-            this.loanStatus = loanStatus.getCode();
+    public void setLoanStatus(OrderStatus orderStatus) {
+        if (orderStatus != null) {
+            this.loanStatus = orderStatus.getCode();
         }
     }
 }

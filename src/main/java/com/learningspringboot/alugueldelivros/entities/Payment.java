@@ -23,12 +23,12 @@ public class Payment implements Serializable {
     @OneToOne
     @MapsId
     @JsonIgnore
-    private Loan loan;
+    private Order order;
 
-    public Payment(Long id, Instant moment, Loan loan) {
+    public Payment(Long id, Instant moment, Order order) {
         this.id = id;
         this.moment = moment;
-        this.loan = loan;
+        this.order = order;
     }
 
     public Long getId() {
@@ -47,12 +47,12 @@ public class Payment implements Serializable {
         this.moment = moment;
     }
 
-    public Loan getLoan() {
-        return loan;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setLoan(Loan loan) {
-        this.loan = loan;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override

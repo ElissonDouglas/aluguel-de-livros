@@ -1,7 +1,7 @@
 package com.learningspringboot.alugueldelivros.services;
 
-import com.learningspringboot.alugueldelivros.entities.Loan;
-import com.learningspringboot.alugueldelivros.repositories.LoanRepository;
+import com.learningspringboot.alugueldelivros.entities.Order;
+import com.learningspringboot.alugueldelivros.repositories.OrderRepository;
 import com.learningspringboot.alugueldelivros.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,17 +10,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LoanService {
+public class OrderService {
 
     @Autowired
-    private LoanRepository repository;
+    private OrderRepository repository;
 
-    public List<Loan> findAll() {
+    public List<Order> findAll() {
         return repository.findAll();
     }
 
-    public Loan findById(Long id) {
-        Optional<Loan> obj = repository.findById(id);
+    public Order findById(Long id) {
+        Optional<Order> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 

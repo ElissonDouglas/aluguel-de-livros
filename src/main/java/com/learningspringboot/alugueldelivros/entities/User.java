@@ -29,7 +29,7 @@ public class User implements Serializable {
     @JsonIgnore // Ignora a lista de empréstimos na response da API, evitando o looping
     @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "client")
-    private List<Loan> loans = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
 
     public User(Long id, String name, String email, String phone, String password) {

@@ -1,8 +1,8 @@
 package com.learningspringboot.alugueldelivros.resources;
 
 
-import com.learningspringboot.alugueldelivros.entities.Loan;
-import com.learningspringboot.alugueldelivros.services.LoanService;
+import com.learningspringboot.alugueldelivros.entities.Order;
+import com.learningspringboot.alugueldelivros.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/loans")
-public class LoanResource {
+@RequestMapping(value="/orders")
+public class OrderResource {
 
     @Autowired
-    private LoanService service;
+    private OrderService service;
 
     @GetMapping
-    public ResponseEntity<List<Loan>> findAll() {
+    public ResponseEntity<List<Order>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Loan> findById(@PathVariable Long id) {
+    public ResponseEntity<Order> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 }
