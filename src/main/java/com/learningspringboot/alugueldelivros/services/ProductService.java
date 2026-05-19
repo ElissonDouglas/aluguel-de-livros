@@ -20,6 +20,6 @@ public class ProductService {
 
     public Book findById(Long id) {
         Optional<Book> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }
