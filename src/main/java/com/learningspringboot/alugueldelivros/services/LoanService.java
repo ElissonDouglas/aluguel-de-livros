@@ -2,6 +2,7 @@ package com.learningspringboot.alugueldelivros.services;
 
 import com.learningspringboot.alugueldelivros.entities.Loan;
 import com.learningspringboot.alugueldelivros.repositories.LoanRepository;
+import com.learningspringboot.alugueldelivros.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class LoanService {
 
     public Loan findById(Long id) {
         Optional<Loan> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
 

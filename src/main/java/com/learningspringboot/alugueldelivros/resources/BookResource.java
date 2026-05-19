@@ -1,7 +1,7 @@
 package com.learningspringboot.alugueldelivros.resources;
 
 import com.learningspringboot.alugueldelivros.entities.Book;
-import com.learningspringboot.alugueldelivros.services.ProductService;
+import com.learningspringboot.alugueldelivros.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import java.util.List;
 public class BookResource {
 
     @Autowired
-    private ProductService service;
+    private BookService service;
 
     @GetMapping
     public ResponseEntity<List<Book>> findAll() {

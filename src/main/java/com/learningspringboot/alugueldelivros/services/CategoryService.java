@@ -1,7 +1,9 @@
 package com.learningspringboot.alugueldelivros.services;
 
 import com.learningspringboot.alugueldelivros.entities.Category;
+import com.learningspringboot.alugueldelivros.entities.User;
 import com.learningspringboot.alugueldelivros.repositories.CategoryRepository;
+import com.learningspringboot.alugueldelivros.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,6 @@ public class CategoryService {
 
     public Category findById(Long id) {
         Optional<Category> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }

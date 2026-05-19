@@ -2,6 +2,7 @@ package com.learningspringboot.alugueldelivros.services;
 
 import com.learningspringboot.alugueldelivros.entities.Book;
 import com.learningspringboot.alugueldelivros.repositories.BookRepository;
+import com.learningspringboot.alugueldelivros.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService {
+public class BookService {
 
     @Autowired
     private BookRepository repository;
@@ -20,6 +21,6 @@ public class ProductService {
 
     public Book findById(Long id) {
         Optional<Book> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }
